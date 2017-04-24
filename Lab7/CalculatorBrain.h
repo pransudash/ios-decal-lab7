@@ -11,9 +11,10 @@
 @interface CalculatorBrain : NSObject
 typedef enum actionType : long {
     multiply = 0,
-    subtract,
-    add,
-    equal
+    subtract = 1,
+    add = 2,
+    equal = 3,
+    mod = 4
 } actionType;
 @property actionType currentAction;
 @property NSString *calculationString;

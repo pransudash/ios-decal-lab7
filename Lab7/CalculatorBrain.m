@@ -88,11 +88,21 @@
         case add:
             total = operand1 + operand2;
             break;
+        case mod:
+            if ((double) ((int) operand1) != operand1 || (double) ((int) operand2) != operand2 || operand2 == 0) {
+                _calculationString = @"Error";
+                
+            } else {
+                total = (int) operand1 % (int) operand2;
+            }
+            break;
         default:
             break;
     }
     if ([self hasDecimalPlaces:operand1 _:operand2]) {
         _calculationString = [NSString stringWithFormat:@"%.02f", total];
+    } else if ([_calculationString isEqualToString:@"Error"]) {
+        _calculationString = [NSString stringWithFormat:@"%@", @"Error"];
     } else {
         _calculationString = [NSString stringWithFormat:@"%d", (int)total];
     }
